@@ -8,7 +8,12 @@ Running a web service in a docker container using [docker-web-service](https://g
 Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http://www.alpinelinux.org/).
 
 ## Usage
-See the Dockerfile in this repo.
+Example:
+
+     FROM laniksj/docker-php-alpine
+     COPY . /var/www/html
+
+I'm using the html folder to store my web content.  In this case it's a web form.
 
 ## Bugs
 Please report any bugs or issues you find. Thanks!

@@ -16,7 +16,7 @@ services:
 
 env:
   global:
-    - CODECOV_TOKEN=485e32cd-5552-43dc-a656-25dc8d2a07d5
+    - CODECOV_TOKEN=7e43d4a5-16da-4ef6-8c6a-6337f61c5f47
     - PATH=${PATH}:${HOME}/kcov/bin
 
 script:

@@ -1,5 +1,5 @@
 # Docker Example Web App
-[![Build Status](https://travis-ci.org/LanikSJ/docker-web-service.svg?branch=master)](https://travis-ci.org/LanikSJ/docker-web-service)[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=LanikSJ/docker-web-service)](https://dependabot.com)
+[![Build Status](https://travis-ci.org/LanikSJ/docker-web-service.svg?branch=master)](https://travis-ci.org/LanikSJ/docker-web-service)[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=LanikSJ/docker-web-service)](https://dependabot.com)[![Known Vulnerabilities](https://snyk.io/test/github/LanikSJ/docker-web-service/badge.svg?targetFile=/docs/Gemfile.lock)](https://snyk.io/test/github/LanikSJ/docker-web-service)
 
 ## Purpose
 Running a web service in a docker container using [docker-web-service](https://github.com/LanikSJ/docker-web-service).

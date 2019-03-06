@@ -11,7 +11,7 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3fd126b036ab4be2a61ab822b982247e)](https://www.codacy.com/app/Lanik/docker-web-service?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LanikSJ/docker-web-service&amp;utm_campaign=Badge_Grade)[![codecov](https://codecov.io/gh/LanikSJ/docker-web-service/branch/master/graph/badge.svg)](https://codecov.io/gh/LanikSJ/docker-web-service)  
 
 ## Docker  
-![](https://img.shields.io/docker/automated/laniksj/docker-web-service.svg?style=flat)[![Docker Repository on Quay](https://quay.io/repository/laniksj/docker-web-service/status "Docker Repository on Quay")](https://quay.io/repository/laniksj/docker-web-service)![](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)[![](https://images.microbadger.com/badges/image/laniksj/docker-web-service.svg)](https://microbadger.com/images/laniksj/docker-web-service "Get your own image badge on microbadger.com")
+![](https://img.shields.io/docker/cloud/automated/laniksj/docker-web-service.svg?style=flat)[![Docker Repository on Quay](https://quay.io/repository/laniksj/docker-web-service/status "Docker Repository on Quay")](https://quay.io/repository/laniksj/docker-web-service)![](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)[![](https://images.microbadger.com/badges/image/laniksj/docker-web-service.svg)](https://microbadger.com/images/laniksj/docker-web-service "Get your own image badge on microbadger.com")
 
      FROM laniksj/docker-php-alpine
      COPY . /var/www/html

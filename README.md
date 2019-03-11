@@ -22,4 +22,4 @@ I'm using the html folder to store my web content.  In this case it's a web form
 Please report any bugs or issues you find. Thanks!
 
 ## License
-[![GPLv3 license](https://badgen.net/github/license/LanikSJ/docker-web-service)](http://perso.crans.org/besson/LICENSE.html)
+[![GPLv3 license](https://img.shields.io/github/license/LanikSJ/ubo-filters.svg?color=brightgreen)](http://perso.crans.org/besson/LICENSE.html)

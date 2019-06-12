@@ -4,7 +4,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/LanikSJ/docker-web-service/badge.svg?targetFile=/docs/Gemfile.lock)](https://snyk.io/test/github/LanikSJ/docker-web-service?targetFile=/docs/Gemfile.lock)
 
 ## Purpose
-Running a web service in a docker container using [docker-web-service](https://github.com/LanikSJ/docker-web-service).
+Running a web service in a docker container using [docker-php-alpine](https://github.com/LanikSJ/docker-php-alpine).
 
 ## Description
 Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http://www.alpinelinux.org/).

@@ -25,10 +25,11 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 
 ## Docker
 
-[![Docker Cloud](https://img.shields.io/docker/cloud/automated/laniksj/docker-web-service.svg?style=flat)](https://hub.docker.com/u/laniksj)
+[![Docker Repository on Docker Hub](https://img.shields.io/docker/cloud/automated/laniksj/docker-web-service.svg?style=flat)](https://hub.docker.com/r/laniksj/docker-web-service)
 [![Docker Repository on Quay](https://quay.io/repository/laniksj/docker-web-service/status "Docker Repository on Quay")](https://quay.io/repository/laniksj/docker-web-service)
-[![Docker Pulls](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)](https://hub.docker.com/u/laniksj)
-[![Docker Layers](https://images.microbadger.com/badges/image/laniksj/docker-web-service.svg)](https://microbadger.com/images/laniksj/docker-web-service "Get your own image badge on microbadger.com")
+![Docker Pulls](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)
+![Docker Size](https://img.shields.io/docker/image-size/laniksj/docker-web-service?sort=date)
+![Docker Layers](https://img.shields.io/microbadger/layers/laniksj/docker-web-service)
 
      FROM laniksj/docker-php-alpine
      COPY . /var/www/html

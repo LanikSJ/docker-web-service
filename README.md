@@ -1,6 +1,6 @@
 # Docker Example Web App
 
-[![Build Status](https://travis-ci.org/LanikSJ/docker-web-service.svg?branch=master)](https://travis-ci.org/LanikSJ/docker-web-service)
+[![Actions Status](https://github.com/LanikSJ/docker-web-server/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/LanikSJ/docker-web-service/actions)
 
 -   [Purpose](#purpose)
 -   [Description](#description)
@@ -29,7 +29,6 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 [![Docker Repository on Quay](https://quay.io/repository/laniksj/docker-web-service/status "Docker Repository on Quay")](https://quay.io/repository/laniksj/docker-web-service)
 ![Docker Pulls](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)
 ![Docker Size](https://img.shields.io/docker/image-size/laniksj/docker-web-service?sort=date)
-![Docker Layers](https://img.shields.io/microbadger/layers/laniksj/docker-web-service)
 
      FROM laniksj/docker-php-alpine
      COPY . /var/www/html

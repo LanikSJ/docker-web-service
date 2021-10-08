@@ -1,6 +1,6 @@
 # Docker Example Web App
 
-[![Actions Status](https://github.com/LanikSJ/docker-web-server/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/LanikSJ/docker-web-service/actions)
+[![Actions Status](https://github.com/LanikSJ/docker-web-service/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/LanikSJ/docker-web-service/actions)
 
 -   [Purpose](#purpose)
 -   [Description](#description)

@@ -1,7 +1,5 @@
 # Docker Example Web App
 
-[![Actions Status](https://github.com/LanikSJ/docker-web-service/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/LanikSJ/docker-web-service/actions)
-
 -   [Purpose](#purpose)
 -   [Description](#description)
 -   [Usage](#usage)
@@ -25,7 +23,7 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 
 ## Docker
 
-[![Docker Repository on Docker Hub](https://img.shields.io/docker/cloud/automated/laniksj/docker-web-service.svg?style=flat)](https://hub.docker.com/r/laniksj/docker-web-service)
+[![Actions Status](https://github.com/LanikSJ/docker-web-service/workflows/Docker%20Publish/badge.svg)](https://github.com/LanikSJ/docker-web-service/actions)
 [![Docker Repository on Quay](https://quay.io/repository/laniksj/docker-web-service/status "Docker Repository on Quay")](https://quay.io/repository/laniksj/docker-web-service)
 ![Docker Pulls](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)
 ![Docker Size](https://img.shields.io/docker/image-size/laniksj/docker-web-service?sort=date)

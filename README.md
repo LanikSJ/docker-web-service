@@ -18,7 +18,7 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 
 ## Usage
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e396a326a5a24e3b849872b6e2ca979b)](https://www.codacy.com/manual/Lanik/docker-web-service?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LanikSJ/docker-web-service&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/117c1f03106e48a2b9fc2a4b8830a513)](https://www.codacy.com/gh/LanikSJ/docker-web-service/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LanikSJ/docker-web-service&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/LanikSJ/docker-web-service/branch/master/graph/badge.svg)](https://codecov.io/gh/LanikSJ/docker-web-service)  
 
 ## Docker

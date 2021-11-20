@@ -28,7 +28,7 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 ![Docker Pulls](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)
 ![Docker Size](https://img.shields.io/docker/image-size/laniksj/docker-web-service?sort=date)
 
-     FROM laniksj/docker-php-alpine
+     FROM ghcr.io/laniksj/docker-php-alpine:master
      COPY . /var/www/html
 
 I'm using the html folder to store my web content.  In this case it's a web form.

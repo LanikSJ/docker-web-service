@@ -21,6 +21,7 @@
  * PHPMailer SPL autoloader.
  * @param string $classname The name of the class to load
  */
+ 
 function PHPMailerAutoload($classname)
 {
     //Can't use __DIR__ as it's only in PHP 5.3+

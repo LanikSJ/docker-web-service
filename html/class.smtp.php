@@ -30,50 +30,50 @@ class SMTP
      * The PHPMailer SMTP version number.
      * @var string
      */
-    const VERSION = '5.2.14';
+    public const VERSION = '5.2.14';
 
     /**
      * SMTP line break constant.
      * @var string
      */
-    const CRLF = "\r\n";
+    public const CRLF = "\r\n";
 
     /**
      * The SMTP port to use if one is not specified.
      * @var integer
      */
-    const DEFAULT_SMTP_PORT = 25;
+    public const DEFAULT_SMTP_PORT = 25;
 
     /**
      * The maximum line length allowed by RFC 2822 section 2.1.1
      * @var integer
      */
-    const MAX_LINE_LENGTH = 998;
+    public const MAX_LINE_LENGTH = 998;
 
     /**
      * Debug level for no output
      */
-    const DEBUG_OFF = 0;
+    public const DEBUG_OFF = 0;
 
     /**
      * Debug level to show client -> server messages
      */
-    const DEBUG_CLIENT = 1;
+    public const DEBUG_CLIENT = 1;
 
     /**
      * Debug level to show client -> server and server -> client messages
      */
-    const DEBUG_SERVER = 2;
+    public const DEBUG_SERVER = 2;
 
     /**
      * Debug level to show connection status, client -> server and server -> client messages
      */
-    const DEBUG_CONNECTION = 3;
+    public const DEBUG_CONNECTION = 3;
 
     /**
      * Debug level to show all messages
      */
-    const DEBUG_LOWLEVEL = 4;
+    public const DEBUG_LOWLEVEL = 4;
 
     /**
      * The PHPMailer SMTP Version number.
@@ -460,8 +460,8 @@ class SMTP
                  * PROTOCOL Docs http://curl.haxx.se/rfc/ntlm.html#ntlmSmtpAuthentication
                  */
                 require_once 'extras/ntlm_sasl_client.php';
-                $temp = new stdClass;
-                $ntlm_client = new ntlm_sasl_client_class;
+                $temp = new stdClass();
+                $ntlm_client = new ntlm_sasl_client_class();
                 //Check that functions are available
                 if (!$ntlm_client->Initialize($temp)) {
                     $this->setError($temp->error);
@@ -703,7 +703,7 @@ class SMTP
     public function hello($host = '')
     {
         //Try extended hello first (RFC 2821)
-        return (boolean)($this->sendHello('EHLO', $host) or $this->sendHello('HELO', $host));
+        return (bool)($this->sendHello('EHLO', $host) or $this->sendHello('HELO', $host));
     }
 
     /**

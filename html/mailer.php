@@ -9,17 +9,17 @@
 <body>
 <?php
 
-  $requestor      =     $_POST['sender_requestor'];
-  $email          =     $_POST['sender_email'];
-  $priority       =     $_POST['sender_priority'];
+  $requestor      =     $_POST["sender_requestor"];
+  $email          =     $_POST["sender_email"];
+  $priority       =     $_POST["sender_priority"];
 
-  $source         =     $_POST['source'];
-  $destination    =     $_POST['destination'];
-  $port           =     $_POST['port'];
+  $source         =     $_POST["source"];
+  $destination    =     $_POST["destination"];
+  $port           =     $_POST["port"];
 
-  $app            =     $_POST['sender_app'];
-  $time           =     $_POST['sender_time'];
-  $purpose        =     $_POST['sender_purpose'];
+  $app            =     $_POST["sender_app"];
+  $time           =     $_POST["sender_time"];
+  $purpose        =     $_POST["sender_purpose"];
 
 
 require 'PHPMailerAutoload.php';
@@ -30,7 +30,7 @@ if (empty($source)) {
     exit();
 }
 
-$mail = new PHPMailer;
+$mail = new PHPMailer();
 
 //$mail->SMTPDebug = 3;                // Enable verbose debug output
 

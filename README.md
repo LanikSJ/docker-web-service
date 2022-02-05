@@ -1,5 +1,10 @@
 # Docker Example Web App
 
+![GitHub Repo Size](https://img.shields.io/github/repo-size/laniksj/docker-web-service)
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/laniksj/docker-web-service)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/laniksj/docker-web-service)
+![GitHub Commit Activity](https://img.shields.io/github/commit-activity/m/laniksj/docker-web-service)  
+
 -   [Purpose](#purpose)
 -   [Description](#description)
 -   [Usage](#usage)
@@ -24,9 +29,6 @@ Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http:/
 ## Docker
 
 [![Actions Status](https://github.com/LanikSJ/docker-web-service/workflows/Docker%20Publish/badge.svg)](https://github.com/LanikSJ/docker-web-service/actions)
-[![Docker Repository on Quay](https://quay.io/repository/laniksj/docker-web-service/status "Docker Repository on Quay")](https://quay.io/repository/laniksj/docker-web-service)
-![Docker Pulls](https://img.shields.io/docker/pulls/laniksj/docker-web-service.svg?style=flat)
-![Docker Size](https://img.shields.io/docker/image-size/laniksj/docker-web-service?sort=date)
 
      FROM ghcr.io/laniksj/docker-php-alpine:master
      COPY . /var/www/html

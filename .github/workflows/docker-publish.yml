@@ -2,11 +2,15 @@ name: docker-publish
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+    paths:
+      - html/*
+      - Dockerfile
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
+    paths:
+      - html/*
+      - Dockerfile
 
 env:
   REGISTRY: ghcr.io

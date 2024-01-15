@@ -1,6 +1,6 @@
 ---
-title: Docker Web Service
-description: Docker Example Web App to be Used With Docker PHP Alpine
+title: Docker Example Web App
+description: Docker Example Web App For Docker PHP Alpine
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-slate

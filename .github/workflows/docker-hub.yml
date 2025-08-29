@@ -5,8 +5,6 @@ on:
     branches: [ master ]
     paths:
       - Dockerfile
-      - entrypoint.*
-      - requirements.txt
   pull_request:
     branches: [ master ]
     paths:

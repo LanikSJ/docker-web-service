@@ -1,0 +1,54 @@
+# Cline Rules for docker-web-service Repository
+
+## Repository Overview
+
+docker-web-service provides generic web service Docker images and configurations.
+
+## Code Standards and Practices
+
+### Docker Standards
+
+- Follow Docker best practices for service containers
+- Implement proper networking and volume configurations
+- Use environment variables for configuration
+- Include health checks and startup probes
+
+### Documentation Standards
+
+- Include clear docker-compose examples and configurations
+- Document container environment variables and options
+- Provide service-specific setup and configuration instructions
+- Use markdown formatting consistently
+
+### Markdown Compliance Requirements
+
+- **ALL markdown files (.md) MUST pass markdownlint validation with zero errors or warnings**
+- Run `markdownlint <filename>` on every markdown file before considering it complete
+- Follow the project's `.markdownlint.json` configuration strictly
+- Address ALL markdownlint issues immediately - no exceptions or workarounds
+- Common requirements include:
+  - Maximum line length of 80 characters (MD013)
+  - Consistent heading styles and hierarchy
+  - Proper list formatting and indentation
+  - Blank lines around headings and code blocks
+  - Consistent link and reference formatting
+  - No trailing whitespace
+  - Files must end with newlines
+  - Proper table formatting when applicable
+- Use `markdownlint --fix <filename>` for auto-fixable issues when available
+- Validate markdown files in CI/CD pipelines where applicable
+
+## Development Guidelines
+
+### When Making Changes
+
+- Preserve existing functionality unless explicitly asked to change it
+- Update documentation when adding new services or configurations
+- **Always run markdownlint and fix all issues in markdown files before considering changes complete**
+
+### Service Container Standards
+
+- Implement proper signal handling for graceful shutdowns
+- Use appropriate base images for different service types
+- Provide configurable logging and monitoring options
+- Test containers across different orchestration platforms

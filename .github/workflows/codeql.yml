@@ -24,8 +24,6 @@ jobs:
         include:
         - language: actions
           build-mode: none
-        - language: php
-          build-mode: none
     
     steps:
     - name: Checkout Repository

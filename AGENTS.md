@@ -1,4 +1,4 @@
-# AI Rules & Project Standards for docker-web-service
+# Agent Rules & Project Standards for docker-web-service
 
 ## Repository Overview
 

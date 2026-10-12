@@ -439,24 +439,6 @@ class PHPMailer
     public $SMTPKeepAlive = false;
 
     /**
-     * Whether to split multiple to addresses into multiple messages
-     * or send them all in one message.
-     * Only supported in `mail` and `sendmail` transports, not in SMTP.
-     *
-     * @var bool
-     *
-     * @deprecated 6.0.0 PHPMailer isn't a mailing list manager!
-     */
-    public $SingleTo = false;
-
-    /**
-     * Storage for addresses when SingleTo is enabled.
-     *
-     * @var array
-     */
-    protected $SingleToArray = [];
-
-    /**
      * Whether to generate VERP addresses on send.
      * Only applicable when sending via SMTP.
      *
@@ -821,12 +803,12 @@ class PHPMailer
     /**
      * Constructor.
      *
-     * @param bool $exceptions Should we throw external exceptions?
+     * @param bool|null $exceptions Should we throw external exceptions?
      */
     public function __construct($exceptions = null)
     {
         if (null !== $exceptions) {
-            $this->exceptions = (bool) $exceptions;
+            $this->exceptions = $exceptions;
         }
         //Pick an appropriate debug output format automatically
         $this->Debugoutput = (strpos(PHP_SAPI, 'cli') !== false ? 'echo' : 'html');
@@ -1734,55 +1716,26 @@ class PHPMailer
         $this->edebug('Envelope sender: ' . $this->Sender);
         $this->edebug("Headers: {$header}");
 
-        if ($this->SingleTo) {
-            foreach ($this->SingleToArray as $toAddr) {
-                $mail = @popen($sendmail, 'w');
-                if (!$mail) {
-                    throw new Exception($this->lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
-                }
-                $this->edebug("To: {$toAddr}");
-                fwrite($mail, 'To: ' . $toAddr . "\n");
-                fwrite($mail, $header);
-                fwrite($mail, $body);
-                $result = pclose($mail);
-                $addrinfo = static::parseAddresses($toAddr, true, $this->CharSet);
-                $this->doCallback(
-                    ($result === 0),
-                    [[$addrinfo['address'], $addrinfo['name']]],
-                    $this->cc,
-                    $this->bcc,
-                    $this->Subject,
-                    $body,
-                    $this->From,
-                    []
-                );
-                $this->edebug("Result: " . ($result === 0 ? 'true' : 'false'));
-                if (0 !== $result) {
-                    throw new Exception($this->lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
-                }
-            }
-        } else {
-            $mail = @popen($sendmail, 'w');
-            if (!$mail) {
-                throw new Exception($this->lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
-            }
-            fwrite($mail, $header);
-            fwrite($mail, $body);
-            $result = pclose($mail);
-            $this->doCallback(
-                ($result === 0),
-                $this->to,
-                $this->cc,
-                $this->bcc,
-                $this->Subject,
-                $body,
-                $this->From,
-                []
-            );
-            $this->edebug("Result: " . ($result === 0 ? 'true' : 'false'));
-            if (0 !== $result) {
-                throw new Exception($this->lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
-            }
+        $mail = @popen($sendmail, 'w');
+        if (!$mail) {
+            throw new Exception($this->lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
+        }
+        fwrite($mail, $header);
+        fwrite($mail, $body);
+        $result = pclose($mail);
+        $this->doCallback(
+            ($result === 0),
+            $this->to,
+            $this->cc,
+            $this->bcc,
+            $this->Subject,
+            $body,
+            $this->From,
+            []
+        );
+        $this->edebug("Result: " . ($result === 0 ? 'true' : 'false'));
+        if (0 !== $result) {
+            throw new Exception($this->lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
         }
 
         return true;
@@ -1816,7 +1769,7 @@ class PHPMailer
             //All other characters have a special meaning in at least one common shell, including = and +.
             //Full stop (.) has a special meaning in cmd.exe, but its impact should be negligible here.
             //Note that this does permit non-Latin alphanumeric characters based on the current locale.
-            if (!ctype_alnum($c) && strpos('@_-.', $c) === false) {
+            if (!ctype_alnum($c) && strpbrk($c, '@_-.') === false) {
                 return false;
             }
         }
@@ -1904,26 +1857,8 @@ class PHPMailer
             $old_from = ini_get('sendmail_from');
             ini_set('sendmail_from', $this->Sender);
         }
-        $result = false;
-        if ($this->SingleTo && count($toArr) > 1) {
-            foreach ($toArr as $toAddr) {
-                $result = $this->mailPassthru($toAddr, $this->Subject, $body, $header, $params);
-                $addrinfo = static::parseAddresses($toAddr, true, $this->CharSet);
-                $this->doCallback(
-                    $result,
-                    [[$addrinfo['address'], $addrinfo['name']]],
-                    $this->cc,
-                    $this->bcc,
-                    $this->Subject,
-                    $body,
-                    $this->From,
-                    []
-                );
-            }
-        } else {
-            $result = $this->mailPassthru($to, $this->Subject, $body, $header, $params);
-            $this->doCallback($result, $this->to, $this->cc, $this->bcc, $this->Subject, $body, $this->From, []);
-        }
+        $result = $this->mailPassthru($to, $this->Subject, $body, $header, $params);
+        $this->doCallback($result, $this->to, $this->cc, $this->bcc, $this->Subject, $body, $this->From, []);
         if (isset($old_from)) {
             ini_set('sendmail_from', $old_from);
         }
@@ -2324,7 +2259,7 @@ class PHPMailer
                         array_key_exists($matches[1], $PHPMAILER_LANG)
                     ) {
                         //Overwrite language-specific strings so we'll never have missing translation keys.
-                        $PHPMAILER_LANG[$matches[1]] = (string)$matches[3];
+                        $PHPMAILER_LANG[$matches[1]] = $matches[3] ?? '';
                     }
                 }
             }
@@ -2575,11 +2510,7 @@ class PHPMailer
 
         //The To header is created automatically by mail(), so needs to be omitted here
         if ('mail' !== $this->Mailer) {
-            if ($this->SingleTo) {
-                foreach ($this->to as $toaddr) {
-                    $this->SingleToArray[] = $this->addrFormat($toaddr);
-                }
-            } elseif (count($this->to) > 0) {
+            if (count($this->to) > 0) {
                 $result .= $this->addrAppend('To', $this->to);
             } elseif (count($this->cc) === 0) {
                 $result .= $this->headerLine('To', 'undisclosed-recipients:;');

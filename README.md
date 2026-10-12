@@ -49,6 +49,10 @@ COPY . /var/www/html
 
 I'm using the html folder to store my web content. In this case it's a web form.
 
+The container runs as the unprivileged `nginx` user and
+listens on port 8080. Map it with `-p 8080:8080` (or
+`-p 80:8080` to keep port 80 on the host).
+
 ## 🐛 Bugs
 
 Please report any bugs or issues you find. Thanks!

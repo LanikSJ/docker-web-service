@@ -43,6 +43,9 @@ docker-web-service provides generic web service Docker images and configurations
 - Use the conventional commit format: `type(scope): description`
 - Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`
 - Commit descriptions should be a bullet list of changes made
+- Bullet lines in commit messages may be unlimited width
+- Keep each commit bullet on a single line; the 80-character
+  line limit applies to markdown files, not commit messages
 - Example:
 
   ```text
@@ -78,6 +81,13 @@ docker-web-service provides generic web service Docker images and configurations
 - Preserve existing functionality unless explicitly asked to change it
 - Update documentation when adding new services or configurations
 - **Always run markdownlint and fix all issues in markdown files before considering changes complete**
+
+### Local Docker Environment
+
+- Docker runs through Colima on development machines
+- Start the daemon with `colima start` and stop it with `colima stop` as needed
+- Verify image changes with a local `docker build` and a smoke test (run the
+  container and curl a PHP page) whenever Docker is available
 
 ### Service Container Standards
 

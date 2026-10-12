@@ -9,6 +9,7 @@
 
 - [🎯 Purpose](#-purpose)
 - [📝 Description](#-description)
+- [📦 Dependencies](#-dependencies)
 - [⚡ Usage](#-usage)
 - [🐋 Docker](#-docker)
 - [🐛 Bugs](#-bugs)
@@ -22,6 +23,15 @@ Running a web service in a docker container using [docker-php-alpine](https://gi
 ## 📝 Description
 
 Apache, PHP-FPM, NGINX and SupervisorD for Docker build on [Alpine Linux](http://www.alpinelinux.org/).
+
+## 📦 Dependencies
+
+PHPMailer is installed via Composer during the Docker
+build. The version range is pinned in
+[composer.json](composer.json); the resolved version is
+locked in `composer.lock` once generated. The autoloader
+lives at `/var/www/vendor/autoload.php` in the image,
+outside the web root.
 
 ## ⚡ Usage
 
@@ -38,6 +48,10 @@ COPY . /var/www/html
 ```
 
 I'm using the html folder to store my web content. In this case it's a web form.
+
+The container runs as the unprivileged `nginx` user and
+listens on port 8080. Map it with `-p 8080:8080` (or
+`-p 80:8080` to keep port 80 on the host).
 
 ## 🐛 Bugs
 

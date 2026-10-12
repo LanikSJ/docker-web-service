@@ -52,3 +52,7 @@ build-iPhoneSimulator/
 
 # pycharm
 .idea
+
+# PHP / Composer
+/vendor/
+composer.phar

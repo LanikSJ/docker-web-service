@@ -289,7 +289,7 @@ class SMTP
                 $str = preg_replace('/\r\n|\r/m', "\n", $str);
                 echo gmdate('Y-m-d H:i:s'),
                 "\t",
-                    //Trim trailing space
+                //Trim trailing space
                 trim(
                     //Indent for readability, except for trailing break
                     str_replace(
@@ -797,21 +797,21 @@ class SMTP
      *
      * @param string $host The host name or IP to connect to
      *
-     * @return bool
+     * @return void
      */
     public function hello($host = '')
     {
         //Try extended hello first (RFC 2821)
         if ($this->sendHello('EHLO', $host)) {
-            return true;
+            return;
         }
 
         //Some servers shut down the SMTP service here (RFC 5321)
         if (substr($this->helo_rply, 0, 3) == '421') {
-            return false;
+            return;
         }
 
-        return $this->sendHello('HELO', $host);
+        $this->sendHello('HELO', $host);
     }
 
     /**
@@ -867,9 +867,8 @@ class SMTP
                             $fields = ($fields ? $fields[0] : 0);
                             break;
                         case 'AUTH':
-                            if (!is_array($fields)) {
-                                $fields = [];
-                            }
+                            // $fields is always an array here (from explode()),
+                            // so keep the remaining auth mechanism list as-is.
                             break;
                         default:
                             $fields = true;
@@ -910,7 +909,7 @@ class SMTP
      *
      * @param bool $close_on_error Should the connection close if an error occurs?
      *
-     * @return bool
+     * @return void
      */
     public function quit($close_on_error = true)
     {
@@ -920,8 +919,6 @@ class SMTP
             $this->close();
             $this->error = $err; //Restore any error from the quit command
         }
-
-        return $noerror;
     }
 
     /**
@@ -969,11 +966,11 @@ class SMTP
      * Abort any transaction that is currently in progress.
      * Implements RFC 821: RSET <CRLF>.
      *
-     * @return bool True on success
+     * @return void
      */
     public function reset()
     {
-        return $this->sendCommand('RSET', 'RSET', 250);
+        $this->sendCommand('RSET', 'RSET', 250);
     }
 
     /**
@@ -1107,7 +1104,7 @@ class SMTP
      * @param string $data    The data to send
      * @param string $command Optionally, the command this is part of, used only for controlling debug output
      *
-     * @return int|bool The number of bytes sent to the server or false on error
+     * @return void
      */
     public function client_send($data, $command = '')
     {
@@ -1122,10 +1119,8 @@ class SMTP
             $this->edebug('CLIENT -> SERVER: ' . $data, self::DEBUG_CLIENT);
         }
         set_error_handler([$this, 'errorHandler']);
-        $result = fwrite($this->smtp_conn, $data);
+        fwrite($this->smtp_conn, $data);
         restore_error_handler();
-
-        return $result;
     }
 
     /**
@@ -1412,13 +1407,13 @@ class SMTP
     }
 
     /**
-     * Extract and return the ID of the last SMTP transaction based on
+     * Extract and record the ID of the last SMTP transaction based on
      * a list of patterns provided in SMTP::$smtp_transaction_id_patterns.
      * Relies on the host providing the ID in response to a DATA command.
-     * If no reply has been received yet, it will return null.
-     * If no pattern was matched, it will return false.
+     * If no reply has been received yet, it will record null.
+     * If no pattern was matched, it will record false.
      *
-     * @return bool|string|null
+     * @return void
      */
     protected function recordLastTransactionID()
     {
@@ -1436,8 +1431,6 @@ class SMTP
                 }
             }
         }
-
-        return $this->last_smtp_transaction_id;
     }
 
     /**

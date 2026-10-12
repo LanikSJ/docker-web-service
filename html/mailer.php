@@ -22,7 +22,7 @@ $time           =     $_POST["sender_time"];
 $purpose        =     $_POST["sender_purpose"];
 
 
-require 'PHPMailerAutoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 if (empty($source)) {
     echo "<H1>NOT COMPLETE</H1>";
@@ -30,7 +30,9 @@ if (empty($source)) {
     exit();
 }
 
-$mail = new PHPMailer();
+// Pass false to keep exceptions disabled, so send() failures
+// are reported via ErrorInfo instead of thrown
+$mail = new \PHPMailer\PHPMailer\PHPMailer(false);
 
 //$mail->SMTPDebug = 3;                // Enable verbose debug output
 

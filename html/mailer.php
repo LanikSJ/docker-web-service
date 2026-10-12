@@ -53,7 +53,7 @@ $mail->Body   .= '<b>Priority:</b> ' . $priority . "<p></p>";
 
 
 $mail->Body   .= "<TABLE>";
-foreach ($source as $i => $value) {
+foreach (array_keys($source) as $i) {
     $mail->Body   .= "<TR>";
     $mail->Body   .= '<TD><b>Source:</b> ' . $source[$i] . "</TD>";
     $mail->Body   .= '<TD><b>Destination:</b> ' . $destination[$i] . "</TD>";

@@ -2,11 +2,12 @@ name: Docker Hub
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
     paths:
+      - html/*
       - Dockerfile
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths:
       - .github/workflows/docker-hub.yml
   workflow_dispatch:
@@ -50,7 +51,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          platforms: 'linux/amd64,linux/arm64'
+          platforms: "linux/amd64,linux/arm64"
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

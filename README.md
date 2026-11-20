@@ -57,6 +57,15 @@ listens on port 8080. Map it with `-p 8080:8080` (or
 
 Please report any bugs or issues you find. Thanks!
 
+## ⚙️ Skills Automation
+
+This repository maintains agent skills via `skills-lock.json`. The GitHub Actions
+workflow automatically updates the skills monthly and creates a pull request.
+
+- **Workflow**: `.github/workflows/skills-update.yml`
+- **Schedule**: Monthly on the 3rd at 00:00 UTC
+- **Manual run**: `npx skills update`
+
 ## 📝 License
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue)](https://en.wikipedia.org/wiki/MIT_License)

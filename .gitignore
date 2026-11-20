@@ -56,3 +56,6 @@ build-iPhoneSimulator/
 # PHP / Composer
 /vendor/
 composer.phar
+
+# Global .agents folder (using global .agents configuration)
+.agents/
